@@ -1,0 +1,103 @@
+.auth-page {
+  background-color: var(--background);
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+}
+
+.auth-box > h3 {
+  font-weight: 900;
+  font-size: 24px;
+}
+
+.auth-box > p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+.auth-form {
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-form > input {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.pass {
+  display: flex;
+  position: relative;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.pass > input {
+  width: 100%;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  transition: 0.3s ease;
+}
+
+.eyeicon {
+  position: absolute;
+  right: 10px;
+  padding: 10px;
+  border-radius: 50% 50%;
+}
+
+.eyeicon:hover {
+  background-color: lightgray;
+}
+
+.auth-form > button {
+  background-color: var(--background);
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  transition: 0.3s ease;
+  user-select: none;
+  cursor: pointer;
+}
+
+.auth-form > input:hover,
+.auth-form > button:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.auth-box > a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  user-select: none;
+}
+
+.showpass {
+  user-select: none;
+  cursor: pointer;
+}
