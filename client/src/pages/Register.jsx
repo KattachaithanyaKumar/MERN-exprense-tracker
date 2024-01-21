@@ -17,6 +17,12 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log("registering user...");
+
+    if (password != confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+
     axios
       .post("http://localhost:3000/api/user", {
         user: {

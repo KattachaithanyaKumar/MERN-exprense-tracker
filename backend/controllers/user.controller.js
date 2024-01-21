@@ -36,6 +36,7 @@ const getAllUsers = async (req, res) => {
     const users = await User.find();
     res.status(200).send({
       message: "fetched all users",
+      lenght: users.length,
       users: users,
     });
   } catch (err) {

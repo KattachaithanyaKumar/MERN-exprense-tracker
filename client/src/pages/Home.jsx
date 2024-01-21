@@ -1,6 +1,11 @@
 import React from "react";
 
-const Home = () => {
+import { useLocation } from "react-router-dom";
+
+const Home = (props) => {
+  const location = useLocation();
+  const userData = location.state.userData;
+  console.log(userData);
   return <div>Home</div>;
 };
 

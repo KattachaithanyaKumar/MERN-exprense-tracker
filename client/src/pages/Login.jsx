@@ -27,10 +27,10 @@ const Login = () => {
         password,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data.user);
         toast.success("Login successful");
         if (res.status == 200) {
-          navigate("/home");
+          navigate("/home", { state: { userData: res.data.user } });
         }
       })
       .catch((e) => {
