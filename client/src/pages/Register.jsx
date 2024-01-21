@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/auth.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
+import axios from "axios";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const navigator = useNavigate();
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    console.log("registering user...");
+    axios
+      .post("http://localhost:3000/api/user", {
+        user: {
+          username,
+          email,
+          password,
+          confirmPassword,
+        },
+      })
+      .then((res) => {
+        console.log("registered user");
+        toast.success("Registered user");
+        console.log(res);
+        navigator("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Registration error");
+      });
+  };
+
   return (
     <div className="auth-page">
       <div className="auth-box">
@@ -11,10 +46,30 @@ const Register = () => {
           Access the most powerfull tool in the industry for expense tracker
         </p>
         <form className="auth-form">
-          <input type="text" placeholder="User Name" />
-          <input type="email" placeholder="E-mail Address" />
-          <input type="password" placeholder="Password" />
-          <input type="password" placeholder="Re-enter Password" />
+          <input
+            type="text"
+            placeholder="User Name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="email"
+            placeholder="E-mail Address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Re-enter Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
           <button onClick={handleRegister}>Register</button>
         </form>
 

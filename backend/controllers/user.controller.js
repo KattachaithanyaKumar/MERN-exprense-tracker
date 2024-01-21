@@ -71,7 +71,7 @@ const deleteUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
     if (!user) {
       res.status(404).send({ message: "user not found" });
     } else {
