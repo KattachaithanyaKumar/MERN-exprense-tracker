@@ -2,6 +2,12 @@ import User from "../models/user.model.js";
 
 const createNewUser = async (req, res) => {
   try {
+    const checkUser = await User.findOne({ email: req.body.user.email });
+    if (checkUser) {
+      return res.status(400).send({
+        message: "user already exists",
+      });
+    }
     const user = new User(req.body.user);
     await user.save();
     res.status(200).json({
@@ -63,4 +69,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
-export { createNewUser, getUser, getAllUsers, updateUser, deleteUser };
+const loginUser = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) {
+      res.status(404).send({ message: "user not found" });
+    } else {
+      if (user.password !== req.body.password) {
+        res.status(401).send({ message: "invalid password" });
+      }
+      res.status(200).send({
+        message: "login successful",
+        user: user,
+      });
+    }
+  } catch (err) {
+    res.status(500).send({ message: err.message });
+  }
+};
+
+export {
+  createNewUser,
+  getUser,
+  getAllUsers,
+  updateUser,
+  deleteUser,
+  loginUser,
+};

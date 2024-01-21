@@ -9,6 +9,7 @@ import {
   getAllUsers,
   updateUser,
   deleteUser,
+  loginUser,
 } from "../controllers/user.controller.js";
 
 //create a new user
@@ -25,5 +26,8 @@ userRouter.put("/:id", updateUser);
 
 //delete a user
 userRouter.delete("/:id", deleteUser);
+
+//login a user
+userRouter.post("/login", loginUser);
 
 export default userRouter;
