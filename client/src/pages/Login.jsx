@@ -27,10 +27,17 @@ const Login = () => {
         password,
       })
       .then((res) => {
-        // console.log(res.data.user);
+        console.log(res.data.user);
         toast.success("Login successful");
         if (res.status == 200) {
-          navigate("/home", { state: { userData: res.data.user } });
+          localStorage.setItem(
+            "userData",
+            JSON.stringify({
+              username: res.data.user.username,
+              id: res.data.user._id,
+            })
+          );
+          navigate("/home");
         }
       })
       .catch((e) => {
@@ -79,7 +86,7 @@ const Login = () => {
           <button onClick={handleLogin}>Login</button>
         </form>
 
-        <Link to={"/"}>Register new account</Link>
+        <Link to={"/register"}>Register new account</Link>
       </div>
     </div>
   );

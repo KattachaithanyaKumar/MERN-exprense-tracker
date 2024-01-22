@@ -36,7 +36,7 @@ const Register = () => {
         console.log("registered user");
         toast.success("Registered user");
         console.log(res);
-        navigator("/login");
+        navigator("/");
       })
       .catch((err) => {
         console.log(err);
@@ -79,7 +79,7 @@ const Register = () => {
           <button onClick={handleRegister}>Register</button>
         </form>
 
-        <Link to={"/login"}>Login to account</Link>
+        <Link to={"/"}>Login to account</Link>
       </div>
     </div>
   );

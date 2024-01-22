@@ -11,11 +11,23 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
       </Routes>
-      <Toaster position="top-center" />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            background: "#0093ff",
+            color: "#fff",
+            // borderRadius: 10,
+            // padding: 10,
+            // width: 300,
+          },
+        }}
+      />
     </BrowserRouter>
   );
 };

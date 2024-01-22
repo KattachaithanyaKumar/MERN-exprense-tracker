@@ -1,0 +1,48 @@
+.navbar {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+}
+
+.profile {
+  padding: 10px;
+  border-radius: 32px;
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.3s ease;
+  position: relative;
+  margin-right: 10vw;
+}
+
+.profile:hover {
+  background-color: var(--background);
+}
+
+.navbar > h1 {
+  margin-left: 10vw;
+}
+
+.profileicon {
+  font-size: 22px;
+}
+
+.profile-bar {
+  position: absolute;
+  left: 50%;
+  bottom: -60px;
+  transform: translate(-50%, 0%);
+}
+
+.profile-bar > button {
+  padding: 10px 20px;
+  border: none;
+  /* outline: none; */
+  border-radius: 12px;
+  /* user-select: none; */
+}
