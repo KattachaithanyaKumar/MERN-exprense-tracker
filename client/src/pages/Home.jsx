@@ -4,9 +4,13 @@ import axios from "axios";
 import "../Styles/home.css";
 import api_path from "../defaults/api_path";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
+  // console.log(userData);
+
+  const navigate = useNavigate();
 
   const [data, setData] = useState(null);
   const [updateBalance, setUpdateBalance] = useState(false);
@@ -52,7 +56,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    if (!userData) {
+      toast.error("Login failed");
+      navigate("/");
+    } else {
+      fetchData();
+    }
   }, []);
 
   return (
@@ -98,6 +107,57 @@ const Home = () => {
           <div className="expense box">
             <h2>Expense:</h2>
             <p>{expense}</p>
+          </div>
+        </div>
+
+        <div className="input-container">
+          <div className="column">
+            <div className="form-container">
+              <h1>Add new record</h1>
+              <form className="form">
+                <div className="row">
+                  <h4>Amount:</h4>
+                  <input type="text" placeholder="Amount" />
+                </div>
+                <div className="row">
+                  <h4>Category:</h4>
+                  <select name="category">
+                    <option value="">option1</option>
+                  </select>
+                </div>
+                <div className="row">
+                  <h4>Type:</h4>
+                  <div className="radio-box">
+                    <input type="radio" name="type" id="Income" />
+                    <label htmlFor="Income">Income</label>
+                    <input type="radio" name="type" id="Expense" />
+                    <label htmlFor="Expense">Expense</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div className="column">
+            <h1>Categories</h1>
+            <div className="categories">
+              <table>
+                <tr>
+                  <th>Category</th>
+                </tr>
+                <tr>
+                  <td>Food</td>
+                </tr>
+                <tr>
+                  <td>Shopping</td>
+                </tr>
+                <tr>
+                  <td className="addcategory">
+                    <input type="text" placeholder="add category" />
+                    <button>add</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
         </div>
       </div>

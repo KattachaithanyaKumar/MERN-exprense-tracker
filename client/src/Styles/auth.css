@@ -85,10 +85,10 @@
   cursor: pointer;
 }
 
-.auth-form > input:hover,
+/* .auth-form > input:hover,
 .auth-form > button:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
+} */
 
 .auth-box > a {
   color: black;

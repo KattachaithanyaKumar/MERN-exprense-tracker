@@ -79,3 +79,86 @@
 .box > p {
   font-size: 24px;
 }
+
+.input-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.input-container > .column {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.3s ease;
+}
+.form-container > h1 {
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row > input,
+.row > select {
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}
+
+.categories > table {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.categories > table > tr > th {
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+}
+
+.categories > table > tr > td {
+  border: 1px solid lightgray;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.addcategory {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.addcategory > input {
+  padding: 10px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.addcategory > button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
+}
