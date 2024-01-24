@@ -24,13 +24,15 @@ const Home = () => {
   const [expense, setExpense] = useState(0);
   const [tempbalance, setTempBalance] = useState(0);
   const [categories, setCategories] = useState(null);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("uncategorized");
+  const [type, setType] = useState("");
+  const [amount, setAmount] = useState(0);
 
   const getAllCategories = () => {
     axios
       .get(api_path + "/category/" + userData.id)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setCategories(res.data);
       })
       .catch((err) => {
@@ -97,6 +99,44 @@ const Home = () => {
     getAllCategories();
   };
 
+  const addRecord = (e) => {
+    e.preventDefault();
+    console.log(type);
+    if (amount == 0) {
+      toast.error("Please enter an amount");
+      return;
+    }
+    console.log(category);
+    if (category == "") {
+      toast.error("Please select a category or create a new category");
+      return;
+    }
+
+    if (type == "") {
+      toast.error("please select a type (income / expense)");
+      return;
+    }
+
+    axios
+      .post(api_path + "/record", {
+        amount: amount,
+        category: category,
+        type: type,
+        userId: userData.id,
+      })
+      .then((res) => {
+        console.log(res.data.record);
+        fetchData();
+        setAmount(0);
+      })
+      .catch((err) => {
+        console.error(
+          "Error adding record:",
+          err.response?.data || err.message
+        );
+      });
+  };
+
   useEffect(() => {
     if (!userData) {
       toast.error("Login failed");
@@ -131,8 +171,11 @@ const Home = () => {
           {/* add a new record */}
           <FormContainer
             categories={categories}
-            addCategory={addCategory}
+            setType={setType}
+            addRecord={addRecord}
             setCategory={setCategory}
+            amount={amount}
+            setAmount={setAmount}
           />
           {/* manage categories */}
           <CategoriesTable

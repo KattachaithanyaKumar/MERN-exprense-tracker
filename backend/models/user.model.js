@@ -25,12 +25,6 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
-  transactions: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Record",
-    },
-  ],
 });
 
 const User = model("User", userSchema);

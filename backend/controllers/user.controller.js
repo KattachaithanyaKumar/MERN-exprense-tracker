@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import Category from "../models/category.model.js";
 
 const createNewUser = async (req, res) => {
   try {
@@ -10,6 +11,14 @@ const createNewUser = async (req, res) => {
     }
     const user = new User(req.body.user);
     await user.save();
+
+    const newCategory = new Category({
+      name: "uncategorized",
+      userId: user._id,
+    });
+
+    await newCategory.save();
+
     res.status(200).json({
       message: "created a new user with the data",
       data: req.body.user,

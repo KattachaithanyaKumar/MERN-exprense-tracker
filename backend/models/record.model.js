@@ -9,7 +9,7 @@ const recordSchema = new Schema(
     },
     type: {
       type: String,
-      enum: ["income", "outcome"],
+      enum: ["Income", "Expense"],
       required: true,
     },
     amount: {

@@ -3,40 +3,69 @@ import React from "react";
 
 import "../Styles/formContainer.css";
 
-const FormContainer = ({ categories, addCategory, setCategory }) => {
+const FormContainer = ({
+  categories,
+  setType,
+  addRecord,
+  setCategory,
+  amount,
+  setAmount,
+}) => {
   return (
     <div className="form-container box">
       <h1>Add new record</h1>
       <form className="form">
         <div className="row">
           <h4>Amount:</h4>
-          <input type="text" placeholder="Amount" />
+          <input
+            type="text"
+            placeholder="Amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
         </div>
         <div className="row">
           <h4>Category:</h4>
-          <select name="category">
+          <select name="category" onChange={(e) => setCategory(e.target.value)}>
             {categories?.map((item, index) => (
               <option value={item.name} key={index}>
                 {item.name}
               </option>
             ))}
-            <option value="uncategorized">uncategorized</option>
+            {/* <option value="uncategorized">uncategorized</option> */}
           </select>
         </div>
         <div className="row">
           <h4>Type:</h4>
           <div className="radio-box">
             <div className="radio">
-              <input type="radio" name="type" id="Income" />
+              <input
+                type="radio"
+                name="type"
+                value="Income"
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+                // checked
+              />
               <label htmlFor="Income">Income</label>
             </div>
             <div className="radio">
-              <input type="radio" name="type" id="Expense" />
+              <input
+                type="radio"
+                name="type"
+                value="Expense"
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+              />
               <label htmlFor="Expense">Expense</label>
             </div>
           </div>
         </div>
-        <button className="addRecordButton">Add</button>
+        <button className="addRecordButton" onClick={addRecord}>
+          Add
+        </button>
       </form>
     </div>
   );
