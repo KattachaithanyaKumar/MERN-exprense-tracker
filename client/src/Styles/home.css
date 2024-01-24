@@ -82,9 +82,9 @@
 
 .input-container {
   display: grid;
-  grid-template-columns: auto auto;
-  margin-top: 40px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 40px;
+  margin-top: 40px;
 }
 
 .input-container > .column {
@@ -92,6 +92,9 @@
   border-radius: 12px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .form-container > h1 {
   margin-bottom: 30px;
@@ -119,18 +122,29 @@
 }
 
 .categories {
-  overflow-y: scroll;
+  overflow-y: auto; /* Allow vertical scrolling for the table */
 }
 
 .categories > table {
   width: 100%;
-  border: 1px solid black;
   border-radius: 12px;
-  overflow: hidden;
+  overflow: hidden; /* Hide the overflowing content outside the table */
 }
 
-.categories > table > thead > tr > th {
-  padding: 20px;
+.categories > table > tbody {
+  display: block; /* Block-level display for the table body */
+  max-height: 300px; /* Adjust the max height as needed */
+  overflow-y: auto; /* Enable vertical scrolling for the tbody */
+}
+
+.categories > table > tbody > tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.categories > table > tbody > tr > td {
+  padding: 10px;
   background-color: rgb(241, 241, 241);
   border: none;
   outline: none;
@@ -138,7 +152,6 @@
 
 .categories > table > tbody > tr > td {
   border: 1px solid lightgray;
-  padding: 10px;
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -174,12 +187,13 @@
 }
 
 .addcategory > input {
-  padding: 10px;
+  padding: 20px;
   background-color: rgb(241, 241, 241);
   border: none;
   outline: none;
   border-radius: 6px;
   width: 100%;
+  border: 1px solid lightgray;
 }
 
 .addcategory > button {
@@ -194,4 +208,43 @@
 
 .column > h1 {
   margin-bottom: 30px;
+}
+
+.radio-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.radio {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgb(241, 241, 241);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.radio > input {
+  margin-left: 20px;
+}
+
+.radio > label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.addRecordButton {
+  width: 100%;
+  background-color: var(--background);
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
 }

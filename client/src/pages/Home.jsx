@@ -159,18 +159,26 @@ const Home = () => {
                 <div className="row">
                   <h4>Category:</h4>
                   <select name="category">
-                    <option value="">option1</option>
+                    {categories?.map((item, index) => (
+                      <option value={item.name}>{item.name}</option>
+                    ))}
+                    <option value="uncategorized">uncategorized</option>
                   </select>
                 </div>
                 <div className="row">
                   <h4>Type:</h4>
                   <div className="radio-box">
-                    <input type="radio" name="type" id="Income" />
-                    <label htmlFor="Income">Income</label>
-                    <input type="radio" name="type" id="Expense" />
-                    <label htmlFor="Expense">Expense</label>
+                    <div className="radio">
+                      <input type="radio" name="type" id="Income" />
+                      <label htmlFor="Income">Income</label>
+                    </div>
+                    <div className="radio">
+                      <input type="radio" name="type" id="Expense" />
+                      <label htmlFor="Expense">Expense</label>
+                    </div>
                   </div>
                 </div>
+                <button className="addRecordButton">Add</button>
               </form>
             </div>
           </div>
@@ -178,11 +186,6 @@ const Home = () => {
             <h1>Categories</h1>
             <div className="categories">
               <table>
-                <thead>
-                  <tr>
-                    <th>Category</th>
-                  </tr>
-                </thead>
                 <tbody>
                   {categories?.map((c, i) => (
                     <tr key={i}>
@@ -196,19 +199,18 @@ const Home = () => {
                     </tr>
                   ))}
 
-                  <tr>
-                    <td className="addcategory">
-                      <input
-                        type="text"
-                        placeholder="add category"
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                      />
-                      <button onClick={addCategory}>add</button>
-                    </td>
-                  </tr>
+                  <tr></tr>
                 </tbody>
               </table>
+              <div className="addcategory">
+                <input
+                  type="text"
+                  placeholder="add category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                />
+                <button onClick={addCategory}>add</button>
+              </div>
             </div>
           </div>
         </div>
