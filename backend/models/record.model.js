@@ -7,9 +7,6 @@ const recordSchema = new Schema(
       ref: "Category",
       required: true,
     },
-    discription: {
-      type: String,
-    },
     type: {
       type: String,
       enum: ["income", "outcome"],
@@ -17,6 +14,11 @@ const recordSchema = new Schema(
     },
     amount: {
       type: Number,
+      required: true,
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },

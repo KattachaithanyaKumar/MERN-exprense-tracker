@@ -160,7 +160,9 @@ const Home = () => {
                   <h4>Category:</h4>
                   <select name="category">
                     {categories?.map((item, index) => (
-                      <option value={item.name}>{item.name}</option>
+                      <option value={item.name} key={index}>
+                        {item.name}
+                      </option>
                     ))}
                     <option value="uncategorized">uncategorized</option>
                   </select>
