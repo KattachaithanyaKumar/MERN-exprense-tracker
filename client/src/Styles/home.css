@@ -135,6 +135,7 @@
   display: block; /* Block-level display for the table body */
   max-height: 300px; /* Adjust the max height as needed */
   overflow-y: auto; /* Enable vertical scrolling for the tbody */
+  margin-top: 30px;
 }
 
 .categories > table > tbody > tr {

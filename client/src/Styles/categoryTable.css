@@ -1,0 +1,90 @@
+/* CategoriesTable.css */
+
+.categories {
+  overflow-y: auto; /* Allow vertical scrolling for the table */
+}
+
+.categories > table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden; /* Hide the overflowing content outside the table */
+}
+
+.categories > table > tbody {
+  display: block; /* Block-level display for the table body */
+  max-height: 300px; /* Adjust the max height as needed */
+  overflow-y: auto; /* Enable vertical scrolling for the tbody */
+}
+
+.categories > table > tbody > tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.categories > table > tbody > tr > td {
+  padding: 10px;
+  background-color: rgb(253, 253, 253);
+  border: none;
+  outline: none;
+}
+
+.categories > table > tbody > tr > td {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.categories > table > tbody > tr > td:hover .cat-buttons {
+  opacity: 1;
+}
+
+.cat-buttons {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.cat-buttons > button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
+}
+
+.addcategory {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.addcategory > input {
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  width: 100%;
+  border: 1px solid lightgray;
+}
+
+.addcategory > button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
+}
+
+.column > h1 {
+  margin-bottom: 30px;
+}

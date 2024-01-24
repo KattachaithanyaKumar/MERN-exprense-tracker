@@ -1,0 +1,25 @@
+/* FormContainer.css */
+.form-container > h1 {
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row > input,
+.row > select {
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}

@@ -1,0 +1,20 @@
+/* BalanceBox.css */
+.balance-left {
+  display: flex;
+  align-items: center;
+}
+
+.balance-left > p {
+  margin-left: 20px;
+  font-size: 24px;
+}
+
+.balance-left > input {
+  margin-left: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: rgb(241, 241, 241);
+  font-size: 24px;
+}

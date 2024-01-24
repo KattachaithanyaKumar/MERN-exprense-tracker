@@ -1,0 +1,52 @@
+/* Dashboard.css */
+.dashboard {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "balance balance"
+    "income expense";
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.box {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.3s ease;
+}
+
+.balance {
+  grid-area: balance;
+  display: flex;
+  justify-content: space-between;
+}
+
+.balance > button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
+}
+
+.income,
+.expense {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: white;
+  justify-content: space-between;
+}
+
+.income {
+  grid-area: income;
+  background-color: #00a86b;
+}
+
+.expense {
+  grid-area: expense;
+  background-color: #fd3c4a;
+}

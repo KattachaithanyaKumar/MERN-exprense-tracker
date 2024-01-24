@@ -1,0 +1,17 @@
+/* InputContainer.css */
+.input-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.input-container > .column {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

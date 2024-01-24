@@ -6,6 +6,11 @@ import api_path from "../defaults/api_path";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
+import BalanceBox from "../components/BalanceBox";
+import Dashboard from "../components/DashBoard";
+import FormContainer from "../components/FormContainer";
+import CategoriesTable from "../components/CategoryBox";
+
 const Home = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
   // console.log(userData);
@@ -109,113 +114,36 @@ const Home = () => {
         <p>
           Access the most powerfull tool in the industry for expense tracker
         </p>
+        {/* user's balance */}
+        <BalanceBox
+          updateBalance={updateBalance}
+          balance={balance}
+          setBalance={setBalance}
+          tempbalance={tempbalance}
+          handleUpdateBalance={handleUpdateBalance}
+          setUpdateBalance={setUpdateBalance}
+        />
+        {/* Income and Expense */}
+        <Dashboard income={income} expense={expense} />
 
-        <div className="dashboard">
-          <div className="balance box">
-            <div className="balance-left">
-              <h2>Balance:</h2>
-              {updateBalance ? (
-                <input
-                  type="text"
-                  placeholder="Balance"
-                  value={balance}
-                  onChange={(e) => setBalance(e.target.value)}
-                />
-              ) : (
-                <p>{balance}</p>
-              )}
-            </div>
-            {updateBalance ? (
-              <button onClick={handleUpdateBalance}>Submit</button>
-            ) : (
-              <button
-                onClick={() => {
-                  setUpdateBalance(true);
-                }}
-              >
-                Update balance
-              </button>
-            )}
-          </div>
-          <div className="income box">
-            <h2>Income:</h2>
-            <p>{income}</p>
-          </div>
-          <div className="expense box">
-            <h2>Expense:</h2>
-            <p>{expense}</p>
-          </div>
-        </div>
-
+        {/* Grid */}
         <div className="input-container">
-          <div className="column">
-            <div className="form-container">
-              <h1>Add new record</h1>
-              <form className="form">
-                <div className="row">
-                  <h4>Amount:</h4>
-                  <input type="text" placeholder="Amount" />
-                </div>
-                <div className="row">
-                  <h4>Category:</h4>
-                  <select name="category">
-                    {categories?.map((item, index) => (
-                      <option value={item.name} key={index}>
-                        {item.name}
-                      </option>
-                    ))}
-                    <option value="uncategorized">uncategorized</option>
-                  </select>
-                </div>
-                <div className="row">
-                  <h4>Type:</h4>
-                  <div className="radio-box">
-                    <div className="radio">
-                      <input type="radio" name="type" id="Income" />
-                      <label htmlFor="Income">Income</label>
-                    </div>
-                    <div className="radio">
-                      <input type="radio" name="type" id="Expense" />
-                      <label htmlFor="Expense">Expense</label>
-                    </div>
-                  </div>
-                </div>
-                <button className="addRecordButton">Add</button>
-              </form>
-            </div>
-          </div>
-          <div className="column">
-            <h1>Categories</h1>
-            <div className="categories">
-              <table>
-                <tbody>
-                  {categories?.map((c, i) => (
-                    <tr key={i}>
-                      <td>
-                        {c.name}
-                        <div className="cat-buttons">
-                          <button>update</button>
-                          <button>delete</button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-
-                  <tr></tr>
-                </tbody>
-              </table>
-              <div className="addcategory">
-                <input
-                  type="text"
-                  placeholder="add category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                />
-                <button onClick={addCategory}>add</button>
-              </div>
-            </div>
-          </div>
+          {/* add a new record */}
+          <FormContainer
+            categories={categories}
+            addCategory={addCategory}
+            setCategory={setCategory}
+          />
+          {/* manage categories */}
+          <CategoriesTable
+            categories={categories}
+            category={category}
+            setCategory={setCategory}
+            addCategory={addCategory}
+          />
         </div>
+
+        {/* list of records */}
       </div>
     </div>
   );
