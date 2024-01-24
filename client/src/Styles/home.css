@@ -118,6 +118,10 @@
   border-radius: 12px;
 }
 
+.categories {
+  overflow-y: scroll;
+}
+
 .categories > table {
   width: 100%;
   border: 1px solid black;
@@ -125,17 +129,42 @@
   overflow: hidden;
 }
 
-.categories > table > tr > th {
+.categories > table > thead > tr > th {
   padding: 20px;
   background-color: rgb(241, 241, 241);
   border: none;
   outline: none;
 }
 
-.categories > table > tr > td {
+.categories > table > tbody > tr > td {
   border: 1px solid lightgray;
   padding: 10px;
   border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.categories > table > tbody > tr > td:hover .cat-buttons {
+  opacity: 1;
+}
+
+.cat-buttons {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.cat-buttons > button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
 }
 
 .addcategory {
@@ -161,4 +190,8 @@
   background-color: var(--background);
   color: white;
   cursor: pointer;
+}
+
+.column > h1 {
+  margin-bottom: 30px;
 }

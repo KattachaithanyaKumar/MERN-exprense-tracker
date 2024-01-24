@@ -18,6 +18,20 @@ const Home = () => {
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
   const [tempbalance, setTempBalance] = useState(0);
+  const [categories, setCategories] = useState(null);
+  const [category, setCategory] = useState("");
+
+  const getAllCategories = () => {
+    axios
+      .get(api_path + "/category/" + userData.id)
+      .then((res) => {
+        console.log(res.data);
+        setCategories(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const fetchData = () => {
     axios
@@ -33,6 +47,8 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    getAllCategories();
   };
 
   const handleUpdateBalance = () => {
@@ -53,6 +69,27 @@ const Home = () => {
         setBalance(tempbalance);
       });
     setUpdateBalance(false);
+  };
+
+  const addCategory = () => {
+    axios
+      .post(api_path + "/category", {
+        name: category,
+        userId: userData.id,
+      })
+      .then((res) => {
+        console.log(res.data.category);
+        setCategories([...categories, res.data.category]);
+        setCategory("");
+      })
+      .catch((err) => {
+        console.error(
+          "Error adding category:",
+          err.response?.data || err.message
+        );
+      });
+
+    getAllCategories();
   };
 
   useEffect(() => {
@@ -141,21 +178,36 @@ const Home = () => {
             <h1>Categories</h1>
             <div className="categories">
               <table>
-                <tr>
-                  <th>Category</th>
-                </tr>
-                <tr>
-                  <td>Food</td>
-                </tr>
-                <tr>
-                  <td>Shopping</td>
-                </tr>
-                <tr>
-                  <td className="addcategory">
-                    <input type="text" placeholder="add category" />
-                    <button>add</button>
-                  </td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {categories?.map((c, i) => (
+                    <tr key={i}>
+                      <td>
+                        {c.name}
+                        <div className="cat-buttons">
+                          <button>update</button>
+                          <button>delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+
+                  <tr>
+                    <td className="addcategory">
+                      <input
+                        type="text"
+                        placeholder="add category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                      />
+                      <button onClick={addCategory}>add</button>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
