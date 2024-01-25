@@ -34,7 +34,7 @@ The Expense Tracker App is a web-based application developed to assist users in 
     ```bash
     cd backend
     npm install
-    cd ../
+      
     cd client
     npm install
     ```
