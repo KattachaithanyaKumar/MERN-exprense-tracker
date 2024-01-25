@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../Styles/categoryTable.css";
 import api_path from "../defaults/api_path";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const CategoriesTable = ({
   categories,
@@ -31,6 +32,13 @@ const CategoriesTable = ({
         setEditMode(false);
         setUpdatedCategory("");
         getAllCategories();
+      })
+      .catch((err) => {
+        toast.error("Error updating category");
+        console.error(
+          "Error updating category:",
+          err.response?.data || err.message
+        );
       });
   };
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Styles/recordbox.css";
 import axios from "axios";
 import api_path from "../defaults/api_path";
+import toast from "react-hot-toast";
 
 const RecordBox = ({
   record,
@@ -34,6 +35,7 @@ const RecordBox = ({
         getRecords();
       })
       .catch((err) => {
+        toast.error("unable to delete record");
         console.log(err);
       });
   };
