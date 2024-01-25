@@ -40,11 +40,11 @@ The Expense Tracker App is a web-based application developed to assist users in 
     ```
 
 ## Usage
-1. Start the development server
+1. Start the server
    ```bash
    npm start
    ```
-   or
+   or start the development server
    ```bash
    npm run dev
    ```
