@@ -7,6 +7,7 @@ const recordSchema = new Schema(
       ref: "Category",
       required: true,
     },
+    categoryName: String,
     type: {
       type: String,
       enum: ["Income", "Expense"],

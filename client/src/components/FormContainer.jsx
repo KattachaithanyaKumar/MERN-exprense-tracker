@@ -32,7 +32,6 @@ const FormContainer = ({
                 {item.name}
               </option>
             ))}
-            {/* <option value="uncategorized">uncategorized</option> */}
           </select>
         </div>
         <div className="row">

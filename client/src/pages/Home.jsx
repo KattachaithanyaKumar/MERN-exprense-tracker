@@ -10,6 +10,7 @@ import BalanceBox from "../components/BalanceBox";
 import Dashboard from "../components/DashBoard";
 import FormContainer from "../components/FormContainer";
 import CategoriesTable from "../components/CategoryBox";
+import RecordBox from "../components/RecordBox";
 
 const Home = () => {
   const userData = JSON.parse(localStorage.getItem("userData"));
@@ -24,9 +25,10 @@ const Home = () => {
   const [expense, setExpense] = useState(0);
   const [tempbalance, setTempBalance] = useState(0);
   const [categories, setCategories] = useState(null);
-  const [category, setCategory] = useState("uncategorized");
+  const [category, setCategory] = useState("");
   const [type, setType] = useState("");
   const [amount, setAmount] = useState(0);
+  const [records, setRecords] = useState(null);
 
   const getAllCategories = () => {
     axios
@@ -56,6 +58,19 @@ const Home = () => {
       });
 
     getAllCategories();
+  };
+
+  const getRecords = () => {
+    console.log(api_path + "/record/" + userData.id);
+    axios
+      .get(api_path + "/record/" + userData.id)
+      .then((res) => {
+        console.log(res.data);
+        setRecords(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleUpdateBalance = () => {
@@ -127,6 +142,7 @@ const Home = () => {
       .then((res) => {
         console.log(res.data.record);
         fetchData();
+        getRecords();
         setAmount(0);
       })
       .catch((err) => {
@@ -143,6 +159,7 @@ const Home = () => {
       navigate("/");
     } else {
       fetchData();
+      getRecords();
     }
   }, []);
 
@@ -171,9 +188,9 @@ const Home = () => {
           {/* add a new record */}
           <FormContainer
             categories={categories}
+            setCategory={setCategory}
             setType={setType}
             addRecord={addRecord}
-            setCategory={setCategory}
             amount={amount}
             setAmount={setAmount}
           />
@@ -183,10 +200,19 @@ const Home = () => {
             category={category}
             setCategory={setCategory}
             addCategory={addCategory}
+            getAllCategories={getAllCategories}
           />
         </div>
 
         {/* list of records */}
+        <RecordBox
+          record={records}
+          setRecords={setRecords}
+          categories={categories}
+          setCategory={setCategory}
+          fetchData={fetchData}
+          getRecords={getRecords}
+        />
       </div>
     </div>
   );

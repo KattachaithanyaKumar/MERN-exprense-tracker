@@ -1,0 +1,97 @@
+.recordBox {
+  margin-top: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 60px;
+  background-color: white;
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.record {
+  margin-top: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.record-filter > select {
+  padding: 20px;
+  background-color: rgb(241, 241, 241);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+}
+
+.record-filter > button,
+.record-right > button {
+  padding: 20px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background-color: var(--background);
+  color: white;
+  cursor: pointer;
+}
+
+.typeSelection {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.type {
+  background-color: rgb(241, 241, 241);
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.type:hover {
+  background-color: rgb(209, 208, 208);
+}
+
+.type > p {
+  user-select: none;
+}
+
+.active {
+  background-color: rgb(161, 159, 159);
+}
+
+.record-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+@media only screen and (max-width: 1060px) {
+  .typeSelection {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .record-filter {
+    flex-direction: column;
+  }
+  .typeSelection {
+    flex-direction: row;
+  }
+}
