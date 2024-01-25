@@ -1,4 +1,4 @@
-# Expense Tracker App
+# Expense Tracker Web Application
 
 Welcome to the Expense Tracker App! This application helps users track their income, expenses, and manage their financial transactions.
 
